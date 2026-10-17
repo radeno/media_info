@@ -34,6 +34,13 @@ module MediaInfo
                 :frame_count,
                 :compression_mode,
                 :compression_mode_string,
+                :language,
+                :language_string,
+                :language_string1,
+                :language_string2,
+                :language_string3,
+                :language_string4,
+                :language_more,
                 :encoded_date,
                 :tagged_date
 
@@ -87,7 +94,7 @@ module MediaInfo
     end
 
     def tagged_date=(value)
-      @encoded_date = Time.parse(value)
+      @tagged_date = Time.parse(value)
     end
   end
 end

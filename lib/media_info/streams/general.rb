@@ -34,11 +34,11 @@ module MediaInfo
     end
 
     def file_created_date=(value)
-      @file_modified = Time.parse(value)
+      @file_created_date = Time.parse(value)
     end
 
     def file_modified_date=(value)
-      @file_modified = Time.parse(value)
+      @file_modified_date = Time.parse(value)
     end
 
     def header_size=(value)

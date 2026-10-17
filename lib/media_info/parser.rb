@@ -67,8 +67,11 @@ module MediaInfo
     # Convert MediaInfo attribute name to Ruby style
     # eg: Image_Format_WithHint_List to image_format_with_hint_list
     def convert_element_name(tag_name)
-      # add underscore between capital case
-      tag_name = tag_name.gsub(/(.)([A-Z])/, '\1_\2')
+      # add underscore between a non-capital and a following capital letter,
+      # so runs of consecutive capitals (acronyms like HDR, ID, CABAC, GOP,
+      # CLL, FALL) are kept together instead of being split letter by letter
+      # (e.g. HDR_Format must become hdr_format, not h_dr_format)
+      tag_name = tag_name.gsub(/([^A-Z])([A-Z])/, '\1_\2')
       # replace several '_' following by a single one
       tag_name = tag_name.gsub(/_+/, '_')
       tag_name = tag_name.downcase

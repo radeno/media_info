@@ -15,7 +15,12 @@ module MediaInfo
                 :resolution,
                 :resolution_string,
                 :compression_mode,
-                :compression_mode_string
+                :compression_mode_string,
+                :colour_description_present,
+                :colour_primaries,
+                :transfer_characteristics,
+                :matrix_coefficients,
+                :colour_range
 
     private
 

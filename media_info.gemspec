@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.files         = Dir['lib/**/*.rb']
   s.require_paths = ['lib']
 
-  s.requirements << 'mediainfo, >= 18.12'
+  s.requirements << 'mediainfo, >= 23.11'
   s.required_ruby_version = '>= 2.0'
 
   s.add_dependency 'rexml'

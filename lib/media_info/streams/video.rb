@@ -52,6 +52,13 @@ module MediaInfo
                 :chroma_subsampling,
                 :bit_depth,
                 :bit_depth_string,
+                :colour_description_present,
+                :colour_primaries,
+                :transfer_characteristics,
+                :matrix_coefficients,
+                :colour_range,
+                :frame_rate_num,
+                :frame_rate_den,
                 :scan_type,
                 :scan_type_string,
                 :scan_order,
@@ -124,19 +131,19 @@ module MediaInfo
     end
 
     def frame_rate=(value)
-      @frame_rate = value.to_i
+      @frame_rate = parse_frame_rate(value)
     end
 
     def frame_rate_minimum=(value)
-      @frame_rate_minimum = value.to_i
+      @frame_rate_minimum = parse_frame_rate(value)
     end
 
     def frame_rate_nominal=(value)
-      @frame_rate_nominal = value.to_i
+      @frame_rate_nominal = parse_frame_rate(value)
     end
 
     def frame_rate_maximum=(value)
-      @frame_rate_maximum = value.to_i
+      @frame_rate_maximum = parse_frame_rate(value)
     end
 
     def bit_depth=(value)
@@ -147,12 +154,25 @@ module MediaInfo
       @resolution = value.to_i
     end
 
+    def frame_rate_num=(value)
+      @frame_rate_num = value.to_i
+    end
+
+    def frame_rate_den=(value)
+      @frame_rate_den = value.to_i
+    end
+
     def encoded_date=(value)
       @encoded_date = Time.parse(value)
     end
 
     def tagged_date=(value)
-      @encoded_date = Time.parse(value)
+      @tagged_date = Time.parse(value)
+    end
+
+    def parse_frame_rate(value)
+      number = Float(value)
+      (number % 1).zero? ? number.to_i : number
     end
   end
 end
